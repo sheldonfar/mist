@@ -1,0 +1,1 @@
+export const CHANGE_DEGREE_UNITS = 'settings/CHANGE_DEGREE_UNITS'

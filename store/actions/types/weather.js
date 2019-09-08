@@ -1,0 +1,3 @@
+export const FETCH_WEATHER = 'weather/FETCH_WEATHER'
+export const FETCH_WEATHER_SUCCESS = 'weather/FETCH_WEATHER_SUCCESS'
+export const FETCH_WEATHER_FAILURE = 'weather/FETCH_WEATHER_FAILURE'
