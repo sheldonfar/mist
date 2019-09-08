@@ -1,8 +1,9 @@
 import {FETCH_WEATHER, FETCH_WEATHER_FAILURE, FETCH_WEATHER_SUCCESS} from "../actions/types/weather";
 
 const INITIAL_STATE = {
-    value: null,
     isLoading: false,
+    temperature: null,
+    description: null,
 }
 
 const weather = (state = INITIAL_STATE, action) => {
@@ -10,7 +11,12 @@ const weather = (state = INITIAL_STATE, action) => {
         case FETCH_WEATHER:
             return { ...state, isLoading: true }
         case FETCH_WEATHER_SUCCESS:
-            return { ...state, isLoading: false, value: action.value }
+            return {
+                ...state,
+                isLoading: false,
+                temperature: action.weather.main.temp,
+                description: action.weather.weather[0].description
+            }
         case FETCH_WEATHER_FAILURE:
             return { ...state, error: action.error, isLoading: false }
         default:
@@ -19,6 +25,7 @@ const weather = (state = INITIAL_STATE, action) => {
 }
 
 const getWeather = state => state.weather
-export const getWeatherValue = state => getWeather(state).value
+export const getWeatherTemperature = state => getWeather(state).temperature
+export const getWeatherDescription = state => getWeather(state).description
 
 export default weather

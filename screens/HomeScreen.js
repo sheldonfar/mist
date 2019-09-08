@@ -6,10 +6,15 @@ import {
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {fetchWeather} from "../store/actions/weather";
+import {getWeatherDescription, getWeatherTemperature} from "../store/reducers/weather";
+import {getDegreeUnits} from "../store/reducers/settings";
 
 export default function HomeScreen() {
+  const temperature = useSelector(getWeatherTemperature)
+  const description = useSelector(getWeatherDescription)
+  const units = useSelector(getDegreeUnits)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -32,8 +37,8 @@ export default function HomeScreen() {
 
             <View style={[styles.weatherContainer]}>
               <Text style={[styles.text, styles.dateText]}>Today</Text>
-              <Text style={[styles.text, styles.degreeText]}>22</Text>
-              <Text style={styles.text}>Sunny</Text>
+              <Text style={[styles.text, styles.degreeText]}>{`${Math.round(temperature)} ${units.symbol}`}</Text>
+              <Text style={styles.text}>{description}</Text>
             </View>
           </View>
       </View>

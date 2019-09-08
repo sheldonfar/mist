@@ -7,10 +7,10 @@ import {getDegreeUnits} from "../reducers/settings";
 function* fetchWeather({ city, country }) {
     try {
         const units = yield select(getDegreeUnits)
-        const resp = yield call(API.fetchWeather, city, country, units.apiName)
-        console.info("REEEEE", resp)
-        yield put(fetchWeatherSuccess(resp))
+        const weather = yield call(API.fetchWeather, city, country, units.apiName)
+        yield put(fetchWeatherSuccess(weather))
     } catch (error) {
+        console.error(error)
         yield put(fetchWeatherFailure(error))
     }
 }
