@@ -1,0 +1,113 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:react/all"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  },
+  "plugins": ["jest", "jsx-a11y", "react-hooks"],
+  "rules": {
+    "prefer-arrow-callback": [
+      "error",
+      {
+        "allowNamedFunctions": true
+      }
+    ],
+    "arrow-parens": ["error", "as-needed"],
+    "class-methods-use-this": "off",
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline",
+        "imports": "always-multiline",
+        "objects": "always-multiline"
+      }
+    ],
+    "function-paren-newline": "off",
+    "implicit-arrow-linebreak": "off",
+    "import/prefer-default-export": "off",
+    "max-len": ["error", { "code": 130 }],
+    "no-case-declarations": "off",
+    "no-confusing-arrow": "off",
+    "no-nested-ternary": "off",
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "no-shadow": "off",
+    "no-console": "error",
+    "object-curly-newline": ["error", {
+      "ObjectExpression": { "multiline": true, "minProperties": 7, "consistent": true },
+      "ObjectPattern":  { "multiline": true, "minProperties": 7, "consistent": true },
+      "ImportDeclaration": { "multiline": true, "minProperties": 7, "consistent": true },
+      "ExportDeclaration": { "multiline": true, "minProperties": 5, "consistent": true }
+    }],
+    "operator-linebreak": "off",
+    "prefer-promise-reject-errors": "off",
+    "react/destructuring-assignment": "off",
+    "react/forbid-component-props": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-first-prop-new-line": "off",
+    "react/jsx-handler-names": "off",
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-indent": [2, 2],
+    "react/jsx-max-depth": "off",
+    "react/jsx-max-props-per-line": "off",
+    "react/jsx-no-bind": "off",
+    "react/jsx-no-duplicate-props": ["error", { "ignoreCase": true }],
+    "react/jsx-no-literals": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-sort-props": ["error", {
+      "callbacksLast": true,
+      "shorthandFirst": true
+    }],
+    "react/jsx-wrap-multilines": "off",
+    "react/no-children-prop": "off",
+    "react/prop-types": "off",
+    "react/prefer-stateless-function": ["error", { "ignorePureComponents": true }],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "semi": [2, "never"],
+    "jsx-quotes": "error",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js", "**/*.spec.js", "src/setupTests.js"]}],
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-props-no-spreading": "off",
+    "react/display-name": "off",
+    "react/jsx-curly-newline": "off",
+    "jsx-a11y/alt-text": [ "error", {
+      "elements": [ "img" ],
+      "img": ["Image"]
+    }],
+    "no-mixed-operators": ["error", {
+      "groups": [
+        ["%", "**"],
+        ["%", "+"],
+        ["%", "-"],
+        ["%", "*"],
+        ["%", "/"],
+        ["&", "|", "<<", ">>", ">>>"],
+        ["==", "!=", "===", "!=="],
+        ["&&", "||"]
+      ],
+      "allowSamePrecedence": false
+    }]
+  },
+  "env": {
+    "browser": true,
+    "jest/globals": true
+  }
+}
