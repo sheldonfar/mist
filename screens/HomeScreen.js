@@ -11,11 +11,15 @@ import {fetchWeather} from "../store/actions/weather";
 import {getWeatherDescription, getWeatherTemperature} from "../store/reducers/weather";
 import {getDegreeUnits} from "../store/reducers/settings";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const temperature = useSelector(getWeatherTemperature)
   const description = useSelector(getWeatherDescription)
   const units = useSelector(getDegreeUnits)
   const dispatch = useDispatch()
+
+  const parent = navigation.dangerouslyGetParent();
+  const isDrawerOpen = parent && parent.state && parent.state.isDrawerOpen;
+  console.info("_>>>>>> ", isDrawerOpen)
 
   useEffect(() => {
     dispatch(fetchWeather())
@@ -28,7 +32,9 @@ export default function HomeScreen() {
     >
       <View style={[styles.root, styles.container]}>
           <View>
-            <MaterialIcons name="menu" size={32} color="white" />
+            <MaterialIcons name="menu" size={32} color="white" onPress={() => {
+              navigation.toggleDrawer();
+            }} />
           </View>
           <View style={styles.mainContainer}>
             <Text style={[styles.text, styles.locationText]}>London,</Text>
@@ -47,7 +53,7 @@ export default function HomeScreen() {
 }
 
 HomeScreen.navigationOptions = {
-  header: null,
+  drawerLabel: 'Homeee',
 };
 
 const styles = StyleSheet.create({
