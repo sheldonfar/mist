@@ -6,7 +6,7 @@ import rootSaga from './sagas'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose // eslint-disable-line no-underscore-dangle
 
-const persistedState = {} //LS.loadState()
+const persistedState = {} // LS.loadState()
 
 export default function () {
   const sagaMiddleware = createSagaMiddleware()

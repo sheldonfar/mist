@@ -1,39 +1,15 @@
-import { AppLoading } from 'expo';
-import { Asset } from 'expo-asset';
-import * as Font from 'expo-font';
-import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { AppLoading } from 'expo'
+import { Asset } from 'expo-asset'
+import * as Font from 'expo-font'
+import React, { useState } from 'react'
+import { StatusBar, StyleSheet, View } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 
-import AppNavigator from './navigation/AppNavigator';
-import {Provider} from "react-redux";
+import { Provider } from 'react-redux'
+import AppNavigator from './navigation/AppNavigator'
 import configureStore from './store'
 
 const store = configureStore()
-
-export default function App(props) {
-  const [isLoadingComplete, setLoadingComplete] = useState(false);
-
-  return (
-      <Provider store={store}>
-        {!isLoadingComplete && !props.skipLoadingScreen
-            ? (
-                <AppLoading
-                    startAsync={loadResourcesAsync}
-                    onError={handleLoadingError}
-                    onFinish={() => handleFinishLoading(setLoadingComplete)}
-                />
-            )
-            : (
-                <View style={styles.container}>
-                  <StatusBar hidden barStyle="default" />
-                  <AppNavigator />
-                </View>
-            )
-        }
-      </Provider>
-  )
-}
 
 async function loadResourcesAsync() {
   await Promise.all([
@@ -48,17 +24,18 @@ async function loadResourcesAsync() {
       // remove this if you are not using it in your app
       'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
     }),
-  ]);
+  ])
 }
 
 function handleLoadingError(error) {
   // In this case, you might want to report the error to your error reporting
   // service, for example Sentry
-  console.warn(error);
+  // eslint-disable-next-line no-console
+  console.warn(error)
 }
 
 function handleFinishLoading(setLoadingComplete) {
-  setLoadingComplete(true);
+  setLoadingComplete(true)
 }
 
 const styles = StyleSheet.create({
@@ -66,4 +43,28 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-});
+})
+
+export default function App(props) {
+  const [isLoadingComplete, setLoadingComplete] = useState(false)
+
+  return (
+    <Provider store={store}>
+      {!isLoadingComplete && !props.skipLoadingScreen
+        ? (
+          <AppLoading
+            startAsync={loadResourcesAsync}
+            onError={handleLoadingError}
+            onFinish={() => handleFinishLoading(setLoadingComplete)}
+          />
+        )
+        : (
+          <View style={styles.container}>
+            <StatusBar hidden barStyle="default" />
+            <AppNavigator />
+          </View>
+        )
+      }
+    </Provider>
+  )
+}

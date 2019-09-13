@@ -104,7 +104,8 @@
         ["&&", "||"]
       ],
       "allowSamePrecedence": false
-    }]
+    }],
+    "global-require": "off"
   },
   "env": {
     "browser": true,

@@ -12,5 +12,5 @@ export default {
   KELVIN: {
     apiName: '',
     name: 'KELVIN',
-  }
-};
+  },
+}

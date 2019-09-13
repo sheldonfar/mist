@@ -3,6 +3,6 @@ import weather from './weather'
 
 export default function* () {
   yield all([
-   weather()
+    weather(),
   ])
 }
