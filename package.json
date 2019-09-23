@@ -22,7 +22,7 @@
     "expo": "^35.0.0",
     "expo-asset": "^7.0.0",
     "expo-constants": "6.0.0",
-    "expo-font": "~6.0.1",
+    "expo-font": "~7.0.0",
     "expo-linear-gradient": "^6.0.0",
     "expo-web-browser": "7.0.0",
     "normalizr": "^3.4.1",
